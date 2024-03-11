@@ -1,120 +1,80 @@
-
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.List;
 
-public class Event{
-    private string eventID;
-    private string eventName;
-    private string eventVenre;
-    private localDate eventDate;
-    private ArrayList<srting>eventAttendees;
+public class Event {
+    private String eventID;
+    private String eventName;
+    private String eventVenue;
+    private String eventDate;
+    private List<String> attendees;
 
-    public Event(string eventID,string eventName,string eventVenre){
-         this.eventID = eventID;
-         this.eventName = eventName;
-         this.eventVenre = eventVenre;
-         this.eventDate = eventDate;
-         this.eventAttendees = new ArrayList<>()
+    // Constructor
+    public Event(String eventID, String eventName, String eventVenue, String eventDate) {
+        this.eventID = eventID;
+        this.eventName = eventName;
+        this.eventVenue = eventVenue;
+        this.eventDate = eventDate;
+        this.attendees = new ArrayList<>();
     }
 
-    public string getEventID(){
+    // Getter and Setter methods
+    public String getEventID() {
         return eventID;
     }
 
-    public void setEventID(string eventID){
+    public void setEventID(String eventID) {
         this.eventID = eventID;
     }
 
-    public string getEventName(){
+    public String getEventName() {
         return eventName;
     }
-
-    public void setEventName(string eventName){
+    public void setEventName(String eventName) {
         this.eventName = eventName;
     }
 
-    public string getEventVenre(){
-        return eventVenre;
+    public String getEventVenue() {
+        return eventVenue;
     }
 
-    public LocalDate getEventDate() {
+    public void setEventVenue(String eventVenue) {
+        this.eventVenue = eventVenue;
+    }
+
+    public String getEventDate() {
         return eventDate;
     }
 
-    public void setEventDate(LocalDate eventDate) {
+    public void setEventDate(String eventDate) {
         this.eventDate = eventDate;
     }
 
-    public void setEventVenre(string eventVenre){
-        this.eventVenre = eventVenre;
-    }
-    
-    public ArrayList<String> getEventAttendees() {
-        return eventAttendees;
+    public List<String> getAttendees() {
+        return attendees;
     }
 
-    public void setEventAttendees(ArrayList<String> eventAttendees) {
-        this.eventAttendees = eventAttendees;
-    }
-
-    public ArrayList<String> getEventAttendees() {
-        return eventAttendees;
-    }
-
-    public void setEventAttendees(ArrayList<String> eventAttendees) {
-        this.eventAttendees = eventAttendees;
-    }
- public void organizeEvent() {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Enter Event ID: ");
-        eventID = scanner.nextLine();
-
-        System.out.print("Enter Event Name: ");
-        eventName = scanner.nextLine();
-
-        System.out.print("Enter Event Venue: ");
-        eventVenue = scanner.nextLine();
-
-        System.out.print("Enter Event Date (yyyy-mm-dd): ");
-        eventDate = LocalDate.parse(scanner.nextLine());
-
-        System.out.print("Enter the number of attendees: ");
-        int numAttendees = scanner.nextInt();
-        scanner.nextLine();
-
-        for (int i = 0; i < numAttendees; i++) {
-            System.out.print("Enter Attendee Name: ");
-            String attendeeName = scanner.nextLine();
-            eventAttendees.add(attendeeName);
-        }
-
-        System.out.println("Event organized successfully!");
-    }
-
+    // Method to add an attendee
     public void addAttendee(String attendeeName) {
-        eventAttendees.add(attendeeName);
+        attendees.add(attendeeName);
     }
 
+    // Method to remove an attendee
     public void removeAttendee(String attendeeName) {
-        eventAttendees.remove(attendeeName);
+        attendees.remove(attendeeName);
     }
 
-    public void updateAttendee(int index, String attendeeName) {
-        eventAttendees.set(index, attendeeName);
+    // Method to display total attendees
+    public void displayTotalAttendees() {
+        System.out.println("Total attendees: " + attendees.size());
     }
 
-    public String findAttendee(String attendeeName) {
-        if (eventAttendees.contains(attendeeName)) {
-            return "Attendee found!";
-        } else {
-            return "Attendee not found!";
-        }
+    // Override toString() method for custom output
+    @Override
+    public String toString() {
+        return "Event ID: " + eventID +
+                "\nEvent Name: " + eventName +
+                "\nVenue: " + eventVenue +
+                "\nDate: " + eventDate +
+                "\nAttendees: " + attendees;
     }
-
-    public int getTotalAttendees() {
-        return eventAttendees.size();
-    }
-
-   
+}
